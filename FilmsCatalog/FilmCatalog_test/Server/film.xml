@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfFilms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Films>
+    <FilmId>1</FilmId>
+    <Name>Властелин колец 1</Name>
+    <Genre>Фэнтези</Genre>
+    <Date>2001</Date>
+  </Films>
+  <Films>
+    <FilmId>2</FilmId>
+    <Name>Властелин колец 2 </Name>
+    <Genre>Фэнтези</Genre>
+    <Date>2002</Date>
+  </Films>
+  <Films>
+    <FilmId>3</FilmId>
+    <Name>Довод </Name>
+    <Genre>триллер</Genre>
+    <Date>2020</Date>
+  </Films>
+  <Films>
+    <FilmId>4</FilmId>
+    <Name>Начало</Name>
+    <Genre>фантастика, триллер</Genre>
+    <Date>2010</Date>
+  </Films>
+</ArrayOfFilms>

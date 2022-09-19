@@ -1,0 +1,65 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Client.ViewModel"
+        mc:Ignorable="d"
+        Loaded="MainWindow_OnLoaded"
+        Title="Каталог фильмов" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="DockPanel">
+            <Setter Property="Background" Value="WhiteSmoke"></Setter>
+        </Style>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Background" Value="GhostWhite"></Setter>
+        </Style>
+        <!--<LinearGradientBrush x:Key="GrayBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="DarkGray" Offset="0" />
+            <GradientStop Color="#CCCCFF" Offset="0.5" />
+            <GradientStop Color="DarkGray" Offset="1" />
+        </LinearGradientBrush>-->
+        <Style TargetType="{x:Type Button}">
+            <!--<Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />-->
+            <Setter Property="Width" Value="10" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <viewModel:MainFilmViewModel/>
+    </Window.DataContext>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right"
+                                   Margin="5,10,0,5"
+                                   Orientation="Horizontal">
+            <Button Content="Добавить"
+                    FontFamily="Verdana"
+                    FontWeight="ExtraBlack"
+                    Padding="16,4,16,4"
+                    Width="120"
+                    Command="{Binding AddFilmCommand}"/>
+            <Button Content="Удалить все"
+                    FontFamily="Verdana"
+                    FontWeight="ExtraBlack"
+                    Padding="16,4,16,4"
+                    Width="120"
+                    Command="{Binding RemoveAllFilmCommand}"/>
+        </StackPanel>
+        <ListView ItemsSource="{Binding _Films}" SelectedItem="{Binding SelectedFilm}" SelectionMode="Single" FontFamily="Cordia New" Foreground="Blue">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название фильма" Width="150"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Genre}" Header="Жанр" Width="260"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Год выпуска" Width="120"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Изменить" Command="{Binding UpdateFilmCommand}"></MenuItem>
+                    <MenuItem Header="Удалить" Command="{Binding RemoveFilmCommand}"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </DockPanel>
+</Window>
